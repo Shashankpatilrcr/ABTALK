@@ -1,4 +1,7 @@
 // src/pages/index.js
-// Landing page — candidate selector
-// TODO: Implement candidate grid UI
-export { default } from '../components/CandidateSelector';
+import CandidateSelector from '../components/CandidateSelector';
+
+export default function IndexPage({ appTheme, onToggleTheme }) {
+  return <CandidateSelector appTheme={appTheme} onToggleTheme={onToggleTheme} />;
+}
+
