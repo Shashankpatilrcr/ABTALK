@@ -210,7 +210,20 @@ def _get_topic_fallback(curriculum_topic: dict, history: list[dict] | None = Non
 
 async def evaluate_answer(question: str, answer: str) -> EvaluationOutcome:
     """Evaluate candidate answer with fast single-attempt evaluation and heuristic backup."""
+    clean_ans = answer.strip()
+    words = len(clean_ans.split())
+
+    # Pre-check for single-letter/word or empty/very short responses (< 4 words or < 15 chars)
+    if words < 4 or len(clean_ans) < 15:
+        return EvaluationOutcome(result={
+            "score": 1,
+            "strength": "The candidate provided a response.",
+            "weakness": "The response is too brief (e.g. single character or few words) to demonstrate any technical knowledge.",
+            "suggestion": "Provide a complete technical explanation with details and architectural considerations."
+        })
+
     prompt = EVALUATION_PROMPT.format(question=question[:120], answer=answer[:300])
+    logger.info("Evaluation Prompt: %s", prompt)
     try:
         raw_response = await call_ollama(
             prompt,
@@ -220,14 +233,20 @@ async def evaluate_answer(question: str, answer: str) -> EvaluationOutcome:
             evaluation_question=question,
         )
         evaluation, parse_error = extract_json_detailed(raw_response)
-        if evaluation is not None:
+        if evaluation is not None and isinstance(evaluation.get("score"), (int, float)):
+            score = int(evaluation["score"])
+            # Enforce reasonable score caps based on length
+            if words < 8 or len(clean_ans) < 40:
+                score = min(score, 3)
+            elif words < 15 or len(clean_ans) < 80:
+                score = min(score, 5)
+            evaluation["score"] = score
             return EvaluationOutcome(result=evaluation)
     except Exception as error:
         logger.warning("Ollama evaluation call failed question=%r error=%s", question, error)
 
     # Heuristic evaluation fallback based on answer length & detail if Ollama is busy
-    words = len(answer.split())
-    if words < 3 or len(answer.strip()) < 10:
+    if words < 4 or len(clean_ans) < 15:
         heuristic_score = 1
     else:
         heuristic_score = min(9, max(3, round(words / 6)))
@@ -237,3 +256,4 @@ async def evaluate_answer(question: str, answer: str) -> EvaluationOutcome:
         "weakness": "Could expand further on specific edge cases and metrics.",
         "suggestion": "Include architectural trade-offs in future responses."
     })
+

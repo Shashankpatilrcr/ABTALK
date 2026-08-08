@@ -68,6 +68,14 @@ export function InterviewHeader({ currentStep, totalSteps, candidateName, candid
             <span className="text-slate-600 font-normal text-xs"> / {String(totalSteps).padStart(2, '0')}</span>
           </div>
         </div>
+        <a
+          href="/curriculum"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-mono font-semibold text-slate-400 hover:text-blue-400 transition-colors hidden lg:inline"
+        >
+          Curriculum ↗
+        </a>
         {onToggleTheme && (
           <ThemeToggle theme={appTheme} onToggle={onToggleTheme} />
         )}
