@@ -35,6 +35,12 @@ export default function LandingHero({ appTheme, onToggleTheme }) {
         </div>
 
         <div className="flex items-center gap-5 sm:gap-8">
+          <Link
+            href="/curriculum"
+            className="hidden sm:inline-block text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
+          >
+            Curriculum
+          </Link>
           <a
             href="#how-it-works"
             className="hidden sm:inline-block text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
