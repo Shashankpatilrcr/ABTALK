@@ -158,18 +158,18 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
             </div>
 
             {/* Candidate Metadata Badges */}
-            <div className="space-y-2 text-xs text-slate-400">
+            <div className="space-y-2.5 text-xs sm:text-sm text-slate-300">
               <div className="flex justify-between items-center">
-                <span>Experience</span>
-                <span className="font-mono text-slate-200">{candidateInfo.yearsExperience || 7} Years</span>
+                <span className="font-medium text-slate-400">Experience</span>
+                <span className="font-mono font-semibold text-slate-100">{candidateInfo.yearsExperience || 7} Years</span>
               </div>
               <div className="flex justify-between items-center">
-                <span>Evaluation Date</span>
-                <span className="font-mono text-slate-200">Aug 7, 2026</span>
+                <span className="font-medium text-slate-400">Evaluation Date</span>
+                <span className="font-mono font-semibold text-slate-100">Aug 7, 2026</span>
               </div>
               <div className="flex justify-between items-center">
-                <span>Status</span>
-                <span className="font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-1.5 py-0.5 rounded text-[10px]">
+                <span className="font-medium text-slate-400">Status</span>
+                <span className="font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded text-xs">
                   VERIFIED
                 </span>
               </div>
@@ -177,56 +177,56 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
           </div>
 
           {/* Compact Assessment Journey Progress */}
-          <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 space-y-3 hover:border-slate-700 transition-colors">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block">
+          <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 space-y-3.5 hover:border-slate-700 transition-colors">
+            <span className="text-xs font-mono uppercase tracking-wider text-slate-300 font-bold block">
               Assessment Flow State
             </span>
             
-            <div className="space-y-2.5 text-xs font-mono">
-              <div className="flex items-center justify-between text-slate-300">
+            <div className="space-y-3 text-xs sm:text-sm font-mono">
+              <div className="flex items-center justify-between text-slate-200 font-semibold">
                 <span className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> 01 Setup & Target
+                  <span className="text-emerald-400 font-bold">✓</span> 01 Setup & Target
                 </span>
-                <span className="text-[10px] text-slate-500">Done</span>
+                <span className="text-xs font-bold text-slate-400">Done</span>
               </div>
-              <div className="flex items-center justify-between text-slate-300">
+              <div className="flex items-center justify-between text-slate-200 font-semibold">
                 <span className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> 02 AI Interview Room
+                  <span className="text-emerald-400 font-bold">✓</span> 02 AI Interview Room
                 </span>
-                <span className="text-[10px] text-slate-500">Done</span>
+                <span className="text-xs font-bold text-slate-400">Done</span>
               </div>
-              <div className="flex items-center justify-between text-slate-300">
+              <div className="flex items-center justify-between text-slate-200 font-semibold">
                 <span className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> 03 Adaptive Probes
+                  <span className="text-emerald-400 font-bold">✓</span> 03 Adaptive Probes
                 </span>
-                <span className="text-[10px] text-slate-500">Done</span>
+                <span className="text-xs font-bold text-slate-400">Done</span>
               </div>
               <div className="flex items-center justify-between text-blue-400 font-bold">
                 <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> 04 Intelligence Report
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span> 04 Intelligence Report
                 </span>
-                <span className="text-[10px] bg-blue-950 border border-blue-800 px-1.5 rounded">Active</span>
+                <span className="text-xs font-bold bg-blue-950 border border-blue-800 px-2 py-0.5 rounded">Active</span>
               </div>
             </div>
           </div>
 
           {/* Assessment Signal Strips */}
           <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 grid grid-cols-2 gap-3 text-center font-mono">
-            <div className="bg-slate-950/60 border border-slate-800/60 p-2.5 rounded-xl">
-              <span className="text-slate-500 block text-[9px] uppercase">Questions</span>
-              <span className="text-slate-200 font-bold text-sm mt-0.5 block">{header.questionsCount}</span>
+            <div className="bg-slate-950/60 border border-slate-800/60 p-3 rounded-xl">
+              <span className="text-slate-300 block text-xs font-bold uppercase tracking-wider">Questions</span>
+              <span className="text-slate-100 font-black text-lg sm:text-xl mt-1 block">{header.questionsCount}</span>
             </div>
-            <div className="bg-slate-950/60 border border-slate-800/60 p-2.5 rounded-xl">
-              <span className="text-slate-500 block text-[9px] uppercase">Domains</span>
-              <span className="text-indigo-400 font-bold text-sm mt-0.5 block">{header.topicsCount}</span>
+            <div className="bg-slate-950/60 border border-slate-800/60 p-3 rounded-xl">
+              <span className="text-slate-300 block text-xs font-bold uppercase tracking-wider">Domains</span>
+              <span className="text-indigo-400 font-black text-lg sm:text-xl mt-1 block">{header.topicsCount}</span>
             </div>
-            <div className="bg-slate-950/60 border border-slate-800/60 p-2.5 rounded-xl">
-              <span className="text-slate-500 block text-[9px] uppercase">Adaptive</span>
-              <span className="text-violet-400 font-bold text-sm mt-0.5 block">{header.adaptiveFollowUpsCount}</span>
+            <div className="bg-slate-950/60 border border-slate-800/60 p-3 rounded-xl">
+              <span className="text-slate-300 block text-xs font-bold uppercase tracking-wider">Adaptive</span>
+              <span className="text-violet-400 font-black text-lg sm:text-xl mt-1 block">{header.adaptiveFollowUpsCount}</span>
             </div>
-            <div className="bg-slate-950/60 border border-slate-800/60 p-2.5 rounded-xl">
-              <span className="text-slate-500 block text-[9px] uppercase">Duration</span>
-              <span className="text-emerald-400 font-bold text-sm mt-0.5 block">29m</span>
+            <div className="bg-slate-950/60 border border-slate-800/60 p-3 rounded-xl">
+              <span className="text-slate-300 block text-xs font-bold uppercase tracking-wider">Duration</span>
+              <span className="text-emerald-400 font-black text-lg sm:text-xl mt-1 block">29m</span>
             </div>
           </div>
 
