@@ -6,15 +6,15 @@
    THEME VARIABLES — DARK (default)
    ============================================================ */
 :root {
-  --bg-primary:   #020617;
+  --bg-primary: #020617;
   --bg-secondary: #0f172a;
-  --bg-card:      #0f172a;
-  --bg-elevated:  #1e293b;
+  --bg-card: #0f172a;
+  --bg-elevated: #1e293b;
   --text-primary: #f8fafc;
   --text-secondary: #e2e8f0;
-  --text-muted:   #94a3b8;
-  --text-faint:   #475569;
-  --border:       #1e293b;
+  --text-muted: #94a3b8;
+  --text-faint: #475569;
+  --border: #1e293b;
   --border-muted: #334155;
   color-scheme: dark;
 }
@@ -23,15 +23,15 @@
    THEME VARIABLES — LIGHT (Refined Ice-Blue Tint & High Contrast)
    ============================================================ */
 html.light-mode {
-  --bg-primary:   #f0f4f9;
+  --bg-primary: #f0f4f9;
   --bg-secondary: #ffffff;
-  --bg-card:      #ffffff;
-  --bg-elevated:  #f8fafc;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
   --text-primary: #0f172a;
   --text-secondary: #1e293b;
-  --text-muted:   #334155;
-  --text-faint:   #475569;
-  --border:       #cbd5e1;
+  --text-muted: #334155;
+  --text-faint: #475569;
+  --border: #cbd5e1;
   --border-muted: #e2e8f0;
   color-scheme: light;
 }
@@ -146,19 +146,24 @@ html.light-mode [class*="border-slate-900"] {
 html.light-mode [class*="bg-blue-950"] {
   background-color: #dbeafe !important;
 }
+
 html.light-mode [class*="bg-blue-900"] {
   background-color: #eff6ff !important;
 }
+
 html.light-mode [class*="border-blue-800"] {
   border-color: #93c5fd !important;
 }
+
 html.light-mode [class*="border-blue-900"] {
   border-color: #bfdbfe !important;
 }
+
 html.light-mode .text-blue-400,
 html.light-mode [class*="text-blue-400"] {
   color: #1d4ed8 !important;
 }
+
 html.light-mode .text-blue-300,
 html.light-mode [class*="text-blue-300"] {
   color: #2563eb !important;
@@ -168,12 +173,15 @@ html.light-mode [class*="text-blue-300"] {
 html.light-mode [class*="bg-indigo-950"] {
   background-color: #e0e7ff !important;
 }
+
 html.light-mode [class*="bg-indigo-900"] {
   background-color: #eef2ff !important;
 }
+
 html.light-mode [class*="border-indigo-800"] {
   border-color: #a5b4fc !important;
 }
+
 html.light-mode .text-indigo-400,
 html.light-mode [class*="text-indigo-400"] {
   color: #4338ca !important;
@@ -183,12 +191,15 @@ html.light-mode [class*="text-indigo-400"] {
 html.light-mode [class*="bg-emerald-950"] {
   background-color: #d1fae5 !important;
 }
+
 html.light-mode [class*="bg-emerald-900"] {
   background-color: #ecfdf5 !important;
 }
+
 html.light-mode [class*="border-emerald-800"] {
   border-color: #6ee7b7 !important;
 }
+
 html.light-mode .text-emerald-400,
 html.light-mode [class*="text-emerald-400"] {
   color: #047857 !important;
@@ -198,12 +209,15 @@ html.light-mode [class*="text-emerald-400"] {
 html.light-mode [class*="bg-violet-950"] {
   background-color: #ede9fe !important;
 }
+
 html.light-mode [class*="bg-violet-900"] {
   background-color: #f5f3ff !important;
 }
+
 html.light-mode [class*="border-violet-800"] {
   border-color: #c4b5fd !important;
 }
+
 html.light-mode .text-violet-400,
 html.light-mode [class*="text-violet-400"] {
   color: #6d28d9 !important;
@@ -213,9 +227,11 @@ html.light-mode [class*="text-violet-400"] {
 html.light-mode [class*="bg-amber-950"] {
   background-color: #fef3c7 !important;
 }
+
 html.light-mode [class*="border-amber-800"] {
   border-color: #fcd34d !important;
 }
+
 html.light-mode .text-amber-400,
 html.light-mode [class*="text-amber-400"] {
   color: #b45309 !important;
@@ -280,6 +296,7 @@ html.light-mode textarea::placeholder {
 html.light-mode svg line[stroke="#334155"] {
   stroke: #94a3b8;
 }
+
 html.light-mode svg line[stroke="#1e293b"] {
   stroke: #cbd5e1;
 }
@@ -305,10 +322,6 @@ html.light-mode ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
-  background: #3b82f6;
-  color: #ffffff;
-}
-
 /* ============================================================
    TRANSITIONS ON EVERYTHING FOR SMOOTH TOGGLE
    ============================================================ */
@@ -323,17 +336,33 @@ html:not(.light-mode) * {
    ANIMATIONS
    ============================================================ */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .animate-fadeIn {
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .animate-slideDown {
   animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -341,5 +370,11 @@ html:not(.light-mode) * {
 /* ============================================================
    SCROLLBAR UTILITIES
    ============================================================ */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
