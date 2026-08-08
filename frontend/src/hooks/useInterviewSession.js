@@ -199,8 +199,19 @@ function toQuestion(response, index) {
 }
 
 function slugify(value) {
-  return String(value || 'topic')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '');
+  if (!value) return 'rag_retrieval';
+  const val = String(value).toLowerCase();
+  
+  if (val.includes('embed')) return 'embeddings';
+  if (val.includes('vector') || val.includes('database') || val.includes('index') || val.includes('store')) return 'vector_db';
+  if (val.includes('retriev') || val.includes('search') || val.includes('chunk') || val.includes('hybrid')) return 'rag_retrieval';
+  if (val.includes('prompt') || val.includes('gen') || val.includes('context window') || val.includes('few-shot')) return 'prompt_eng';
+  if (val.includes('llm') || val.includes('generat') || val.includes('rag') || val.includes('hallucin')) return 'rag_gen';
+  if (val.includes('agent') || val.includes('tool') || val.includes('flow') || val.includes('chain')) return 'agentic_ai';
+  if (val.includes('mcp') || val.includes('protocol') || val.includes('api') || val.includes('integration')) return 'mcp';
+  if (val.includes('observe') || val.includes('eval') || val.includes('triad') || val.includes('monitor') || val.includes('trace') || val.includes('metric')) return 'observability';
+
+  // Fallback slugification
+  const slug = val.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  return slug || 'rag_retrieval';
 }

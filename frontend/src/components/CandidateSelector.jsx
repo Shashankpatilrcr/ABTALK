@@ -52,16 +52,16 @@ export default function CandidateSelector({ candidates: initialCandidates = MOCK
         {/* Top Assessment Header */}
         <header className="border-b border-slate-800/80 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-mono tracking-widest text-violet-400 bg-violet-950/40 border border-violet-800/50 px-2.5 py-0.5 rounded">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="text-xs sm:text-sm font-mono font-extrabold tracking-widest text-violet-400 bg-violet-950/80 border border-violet-700/60 px-3 py-1 rounded-lg shadow-sm">
                 ✦ ASSESSMENT ENGINE LAUNCHPAD
               </span>
-              <span className="text-xs font-mono text-slate-500">• Cohort v2.4</span>
+              <span className="text-xs font-mono text-slate-400 font-bold">• Cohort v2.4</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-100 mt-2">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-100 mt-3">
               Assessment Launchpad
             </h1>
-            <p className="text-sm text-slate-400 mt-1 max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl leading-relaxed font-sans">
               Select a target candidate to initiate an evidence-backed adaptive technical assessment.
             </p>
           </div>

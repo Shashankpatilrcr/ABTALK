@@ -61,19 +61,19 @@ export function CognitiveMap({
         {/* SVG Graph Visualization Container */}
         <div className={`${isMobileCollapsed ? 'hidden lg:block' : 'block'} relative w-full overflow-hidden flex justify-center items-center my-1 bg-slate-950/90 border border-slate-800/80 rounded-xl p-3 shadow-inner`}>
           <svg viewBox="0 0 500 490" className="w-full h-auto max-h-[440px] drop-shadow-md">
-            {/* Hierarchy Connection Lines */}
-            <line x1="250" y1="35" x2="130" y2="100" stroke="#334155" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="250" y1="35" x2="370" y2="100" stroke="#334155" strokeWidth="2" strokeDasharray="4 4" />
-            <line x1="130" y1="100" x2="130" y2="190" stroke="#334155" strokeWidth="2" />
-            <line x1="130" y1="190" x2="130" y2="280" stroke="#334155" strokeWidth="2" />
-            <line x1="370" y1="100" x2="370" y2="190" stroke="#334155" strokeWidth="2" />
-            <line x1="130" y1="280" x2="250" y2="360" stroke="#334155" strokeWidth="2" />
-            <line x1="250" y1="360" x2="370" y2="360" stroke="#334155" strokeWidth="2" />
-            <line x1="250" y1="360" x2="250" y2="440" stroke="#334155" strokeWidth="2" />
+            {/* Base Hierarchy Connection Lines */}
+            <line x1="250" y1="35" x2="130" y2="100" stroke={activeTopic === 'rag_retrieval' || exploredTopics.includes('rag_retrieval') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'rag_retrieval' ? "3" : "2"} strokeDasharray="4 4" className="transition-all duration-500" />
+            <line x1="250" y1="35" x2="370" y2="100" stroke={activeTopic === 'rag_gen' || exploredTopics.includes('rag_gen') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'rag_gen' ? "3" : "2"} strokeDasharray="4 4" className="transition-all duration-500" />
+            <line x1="130" y1="100" x2="130" y2="190" stroke={activeTopic === 'embeddings' || exploredTopics.includes('embeddings') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'embeddings' ? "3" : "2"} className="transition-all duration-500" />
+            <line x1="130" y1="190" x2="130" y2="280" stroke={activeTopic === 'vector_db' || exploredTopics.includes('vector_db') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'vector_db' ? "3" : "2"} className="transition-all duration-500" />
+            <line x1="370" y1="100" x2="370" y2="190" stroke={activeTopic === 'prompt_eng' || exploredTopics.includes('prompt_eng') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'prompt_eng' ? "3" : "2"} className="transition-all duration-500" />
+            <line x1="130" y1="280" x2="250" y2="360" stroke={activeTopic === 'agentic_ai' || exploredTopics.includes('agentic_ai') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'agentic_ai' ? "3" : "2"} className="transition-all duration-500" />
+            <line x1="250" y1="360" x2="370" y2="360" stroke={activeTopic === 'mcp' || exploredTopics.includes('mcp') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'mcp' ? "3" : "2"} className="transition-all duration-500" />
+            <line x1="250" y1="360" x2="250" y2="440" stroke={activeTopic === 'observability' || exploredTopics.includes('observability') ? "#3b82f6" : "#334155"} strokeWidth={activeTopic === 'observability' ? "3" : "2"} className="transition-all duration-500" />
 
             {/* Root Node */}
             <g transform="translate(250, 35)">
-              <circle r="18" className="fill-slate-950 stroke-blue-500" strokeWidth="2.5" />
+              <circle r="18" className="fill-slate-950 stroke-blue-500 animate-pulse" strokeWidth="2.5" />
               <text y="5" textAnchor="middle" className="fill-blue-300 text-xs font-bold font-mono">RAG</text>
             </g>
 
@@ -87,31 +87,39 @@ export function CognitiveMap({
                 <g 
                   key={node.id} 
                   transform={`translate(${coords.x}, ${coords.y})`}
-                  className="transition-all duration-300 cursor-pointer"
+                  className="transition-all duration-500 ease-out cursor-pointer"
                   onMouseEnter={() => setHoveredNode(node)}
                   onMouseLeave={() => setHoveredNode(null)}
                 >
                   {/* Outer Pulsing Aura Ring for CURRENT active node */}
                   {isCurrent && (
-                    <circle 
-                      r={isFollowUp ? "26" : "22"} 
-                      className={`animate-pulse ${
-                        isFollowUp 
-                          ? 'fill-emerald-500/20 stroke-emerald-400' 
-                          : 'fill-blue-500/20 stroke-blue-400'
-                      }`} 
-                      strokeWidth="2" 
-                    />
+                    <>
+                      <circle 
+                        r={isFollowUp ? "28" : "24"} 
+                        className={`animate-ping opacity-75 ${
+                          isFollowUp ? 'fill-emerald-400/30' : 'fill-blue-400/30'
+                        }`}
+                      />
+                      <circle 
+                        r={isFollowUp ? "26" : "22"} 
+                        className={`animate-pulse ${
+                          isFollowUp 
+                            ? 'fill-emerald-500/20 stroke-emerald-400' 
+                            : 'fill-blue-500/20 stroke-blue-400'
+                        }`} 
+                        strokeWidth="2" 
+                      />
+                    </>
                   )}
 
                   {/* Core Circle */}
                   <circle 
                     r={isCurrent ? "14" : isExplored ? "11" : "9"} 
-                    className={`transition-all duration-300 ${
+                    className={`transition-all duration-500 ${
                       isCurrent 
-                        ? isFollowUp ? 'fill-emerald-400 stroke-white' : 'fill-blue-500 stroke-white' 
+                        ? isFollowUp ? 'fill-emerald-400 stroke-white scale-110' : 'fill-blue-500 stroke-white scale-110' 
                         : isExplored 
-                          ? 'fill-indigo-950 stroke-indigo-400' 
+                          ? 'fill-indigo-900 stroke-indigo-400' 
                           : 'fill-slate-950 stroke-slate-700'
                     }`} 
                     strokeWidth={isCurrent ? "3" : "2"} 
@@ -125,14 +133,14 @@ export function CognitiveMap({
                       width="130" 
                       height="20" 
                       rx="4"
-                      className={`transition-colors duration-300 ${
+                      className={`transition-all duration-300 ${
                         isCurrent 
-                          ? isFollowUp ? 'fill-emerald-950/90 stroke-emerald-500/60' : 'fill-blue-950/90 stroke-blue-500/60'
+                          ? isFollowUp ? 'fill-emerald-950 stroke-emerald-400' : 'fill-blue-950 stroke-blue-400 shadow-lg'
                           : isExplored 
-                            ? 'fill-slate-900/90 stroke-indigo-800/40' 
+                            ? 'fill-slate-900/90 stroke-indigo-700/60' 
                             : 'fill-slate-950/90 stroke-slate-800/60'
                       }`}
-                      strokeWidth="1"
+                      strokeWidth={isCurrent ? "1.5" : "1"}
                     />
                     <text 
                       x={coords.x > 250 ? "8" : "-8"} 
