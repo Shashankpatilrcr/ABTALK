@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# Generated local storage
+backend/storage/
+api_chroma_db/
+
+# Logs
+*.log

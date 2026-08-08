@@ -1,0 +1,839 @@
+[
+  {
+    "question_id": "day-1-vs-code-python-environment-setup-easy-1",
+    "question": "Can you explain VS Code & Python Environment Setup in simple terms?",
+    "topic": "VS Code & Python Environment Setup",
+    "difficulty": "easy",
+    "learning_objective": "Install VS Code and Python on your machine",
+    "module_id": 1,
+    "day": 1
+  },
+  {
+    "question_id": "day-1-vs-code-python-environment-setup-medium-2",
+    "question": "Walk me through applying VS Code & Python Environment Setup to solve a realistic interview problem.",
+    "topic": "VS Code & Python Environment Setup",
+    "difficulty": "medium",
+    "learning_objective": "Configure the Python extension and Pylance",
+    "module_id": 1,
+    "day": 1
+  },
+  {
+    "question_id": "day-1-vs-code-python-environment-setup-hard-3",
+    "question": "What tradeoffs, failure modes, or edge cases exist with VS Code & Python Environment Setup?",
+    "topic": "VS Code & Python Environment Setup",
+    "difficulty": "hard",
+    "learning_objective": "Create and activate a project virtual environment (.venv)",
+    "module_id": 1,
+    "day": 1
+  },
+  {
+    "question_id": "day-2-local-llm-ai-coding-assistant-setup-easy-4",
+    "question": "Can you explain Local LLM & AI Coding Assistant Setup in simple terms?",
+    "topic": "Local LLM & AI Coding Assistant Setup",
+    "difficulty": "easy",
+    "learning_objective": "Install Ollama and download a local coding model",
+    "module_id": 1,
+    "day": 2
+  },
+  {
+    "question_id": "day-2-local-llm-ai-coding-assistant-setup-medium-5",
+    "question": "Walk me through applying Local LLM & AI Coding Assistant Setup to solve a realistic interview problem.",
+    "topic": "Local LLM & AI Coding Assistant Setup",
+    "difficulty": "medium",
+    "learning_objective": "Verify the local model works through the Ollama CLI",
+    "module_id": 1,
+    "day": 2
+  },
+  {
+    "question_id": "day-2-local-llm-ai-coding-assistant-setup-hard-6",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Local LLM & AI Coding Assistant Setup?",
+    "topic": "Local LLM & AI Coding Assistant Setup",
+    "difficulty": "hard",
+    "learning_objective": "Connect VS Code to the local model using GitHub Copilot or Cline",
+    "module_id": 1,
+    "day": 2
+  },
+  {
+    "question_id": "day-3-first-ai-project-react-frontend-github-easy-7",
+    "question": "Can you explain First AI Project, React Frontend & GitHub in simple terms?",
+    "topic": "First AI Project, React Frontend & GitHub",
+    "difficulty": "easy",
+    "learning_objective": "Build a command-line chatbot powered by your local Ollama model",
+    "module_id": 1,
+    "day": 3
+  },
+  {
+    "question_id": "day-3-first-ai-project-react-frontend-github-medium-8",
+    "question": "Walk me through applying First AI Project, React Frontend & GitHub to solve a realistic interview problem.",
+    "topic": "First AI Project, React Frontend & GitHub",
+    "difficulty": "medium",
+    "learning_objective": "Scaffold a FastAPI backend with a health endpoint",
+    "module_id": 1,
+    "day": 3
+  },
+  {
+    "question_id": "day-3-first-ai-project-react-frontend-github-hard-9",
+    "question": "What tradeoffs, failure modes, or edge cases exist with First AI Project, React Frontend & GitHub?",
+    "topic": "First AI Project, React Frontend & GitHub",
+    "difficulty": "hard",
+    "learning_objective": "Create a React application using Vite",
+    "module_id": 1,
+    "day": 3
+  },
+  {
+    "question_id": "day-4-reading-processing-structured-data-easy-10",
+    "question": "Can you explain Reading & Processing Structured Data in simple terms?",
+    "topic": "Reading & Processing Structured Data",
+    "difficulty": "easy",
+    "learning_objective": "Create synthetic healthcare plans and claims datasets",
+    "module_id": 2,
+    "day": 4
+  },
+  {
+    "question_id": "day-4-reading-processing-structured-data-medium-11",
+    "question": "Walk me through applying Reading & Processing Structured Data to solve a realistic interview problem.",
+    "topic": "Reading & Processing Structured Data",
+    "difficulty": "medium",
+    "learning_objective": "Load and clean structured CSV data using Pandas",
+    "module_id": 2,
+    "day": 4
+  },
+  {
+    "question_id": "day-4-reading-processing-structured-data-hard-12",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Reading & Processing Structured Data?",
+    "topic": "Reading & Processing Structured Data",
+    "difficulty": "hard",
+    "learning_objective": "Store the processed data in a SQLite database",
+    "module_id": 2,
+    "day": 4
+  },
+  {
+    "question_id": "day-5-reading-processing-unstructured-data-easy-13",
+    "question": "Can you explain Reading & Processing Unstructured Data in simple terms?",
+    "topic": "Reading & Processing Unstructured Data",
+    "difficulty": "easy",
+    "learning_objective": "Extract text from healthcare PDFs and Word documents",
+    "module_id": 2,
+    "day": 5
+  },
+  {
+    "question_id": "day-5-reading-processing-unstructured-data-medium-14",
+    "question": "Walk me through applying Reading & Processing Unstructured Data to solve a realistic interview problem.",
+    "topic": "Reading & Processing Unstructured Data",
+    "difficulty": "medium",
+    "learning_objective": "Perform OCR on scanned enrollment forms",
+    "module_id": 2,
+    "day": 5
+  },
+  {
+    "question_id": "day-5-reading-processing-unstructured-data-hard-15",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Reading & Processing Unstructured Data?",
+    "topic": "Reading & Processing Unstructured Data",
+    "difficulty": "hard",
+    "learning_objective": "Scrape useful content from a public healthcare webpage",
+    "module_id": 2,
+    "day": 5
+  },
+  {
+    "question_id": "day-6-building-the-knowledge-base-easy-16",
+    "question": "Can you explain Building the Knowledge Base in simple terms?",
+    "topic": "Building the Knowledge Base",
+    "difficulty": "easy",
+    "learning_objective": "Convert structured and unstructured healthcare data into a unified knowledge base",
+    "module_id": 2,
+    "day": 6
+  },
+  {
+    "question_id": "day-6-building-the-knowledge-base-medium-17",
+    "question": "Walk me through applying Building the Knowledge Base to solve a realistic interview problem.",
+    "topic": "Building the Knowledge Base",
+    "difficulty": "medium",
+    "learning_objective": "Split long documents into retrieval-friendly chunks",
+    "module_id": 2,
+    "day": 6
+  },
+  {
+    "question_id": "day-6-building-the-knowledge-base-hard-18",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Building the Knowledge Base?",
+    "topic": "Building the Knowledge Base",
+    "difficulty": "hard",
+    "learning_objective": "Attach metadata such as source, plan type, and document section to every chunk",
+    "module_id": 2,
+    "day": 6
+  },
+  {
+    "question_id": "day-7-embeddings-explained-easy-19",
+    "question": "Can you explain Embeddings Explained in simple terms?",
+    "topic": "Embeddings Explained",
+    "difficulty": "easy",
+    "learning_objective": "Understand how text is converted into vector embeddings",
+    "module_id": 3,
+    "day": 7
+  },
+  {
+    "question_id": "day-7-embeddings-explained-medium-20",
+    "question": "Walk me through applying Embeddings Explained to solve a realistic interview problem.",
+    "topic": "Embeddings Explained",
+    "difficulty": "medium",
+    "learning_objective": "Generate embeddings for every knowledge base chunk",
+    "module_id": 3,
+    "day": 7
+  },
+  {
+    "question_id": "day-7-embeddings-explained-hard-21",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Embeddings Explained?",
+    "topic": "Embeddings Explained",
+    "difficulty": "hard",
+    "learning_objective": "Store embeddings alongside the original documents",
+    "module_id": 3,
+    "day": 7
+  },
+  {
+    "question_id": "day-8-vector-databases-overview-easy-22",
+    "question": "Can you explain Vector Databases Overview in simple terms?",
+    "topic": "Vector Databases Overview",
+    "difficulty": "easy",
+    "learning_objective": "Learn the role of vector databases in RAG applications",
+    "module_id": 3,
+    "day": 8
+  },
+  {
+    "question_id": "day-8-vector-databases-overview-medium-23",
+    "question": "Walk me through applying Vector Databases Overview to solve a realistic interview problem.",
+    "topic": "Vector Databases Overview",
+    "difficulty": "medium",
+    "learning_objective": "Set up a local Chroma vector database",
+    "module_id": 3,
+    "day": 8
+  },
+  {
+    "question_id": "day-8-vector-databases-overview-hard-24",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Vector Databases Overview?",
+    "topic": "Vector Databases Overview",
+    "difficulty": "hard",
+    "learning_objective": "Create a cloud-based Pinecone index for comparison",
+    "module_id": 3,
+    "day": 8
+  },
+  {
+    "question_id": "day-9-building-populating-the-vector-database-easy-25",
+    "question": "Can you explain Building & Populating the Vector Database in simple terms?",
+    "topic": "Building & Populating the Vector Database",
+    "difficulty": "easy",
+    "learning_objective": "Load knowledge base embeddings into the vector database",
+    "module_id": 3,
+    "day": 9
+  },
+  {
+    "question_id": "day-9-building-populating-the-vector-database-medium-26",
+    "question": "Walk me through applying Building & Populating the Vector Database to solve a realistic interview problem.",
+    "topic": "Building & Populating the Vector Database",
+    "difficulty": "medium",
+    "learning_objective": "Store documents together with metadata for filtering",
+    "module_id": 3,
+    "day": 9
+  },
+  {
+    "question_id": "day-9-building-populating-the-vector-database-hard-27",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Building & Populating the Vector Database?",
+    "topic": "Building & Populating the Vector Database",
+    "difficulty": "hard",
+    "learning_objective": "Verify that every knowledge base chunk has been indexed",
+    "module_id": 3,
+    "day": 9
+  },
+  {
+    "question_id": "day-10-the-retrieval-matching-engine-easy-28",
+    "question": "Can you explain The Retrieval & Matching Engine in simple terms?",
+    "topic": "The Retrieval & Matching Engine",
+    "difficulty": "easy",
+    "learning_objective": "Build a query router that decides between SQL, vector search, or hybrid retrieval",
+    "module_id": 3,
+    "day": 10
+  },
+  {
+    "question_id": "day-10-the-retrieval-matching-engine-medium-29",
+    "question": "Walk me through applying The Retrieval & Matching Engine to solve a realistic interview problem.",
+    "topic": "The Retrieval & Matching Engine",
+    "difficulty": "medium",
+    "learning_objective": "Implement structured data lookup for plans and claims",
+    "module_id": 3,
+    "day": 10
+  },
+  {
+    "question_id": "day-10-the-retrieval-matching-engine-hard-30",
+    "question": "What tradeoffs, failure modes, or edge cases exist with The Retrieval & Matching Engine?",
+    "topic": "The Retrieval & Matching Engine",
+    "difficulty": "hard",
+    "learning_objective": "Implement semantic retrieval from the vector database",
+    "module_id": 3,
+    "day": 10
+  },
+  {
+    "question_id": "day-11-rag-end-to-end-llm-api-basics-easy-31",
+    "question": "Can you explain RAG End-to-End & LLM API Basics in simple terms?",
+    "topic": "RAG End-to-End & LLM API Basics",
+    "difficulty": "easy",
+    "learning_objective": "Connect the retrieval engine to an LLM to build a complete RAG pipeline",
+    "module_id": 4,
+    "day": 11
+  },
+  {
+    "question_id": "day-11-rag-end-to-end-llm-api-basics-medium-32",
+    "question": "Walk me through applying RAG End-to-End & LLM API Basics to solve a realistic interview problem.",
+    "topic": "RAG End-to-End & LLM API Basics",
+    "difficulty": "medium",
+    "learning_objective": "Configure a local or hosted LLM provider using the OpenAI-compatible SDK",
+    "module_id": 4,
+    "day": 11
+  },
+  {
+    "question_id": "day-11-rag-end-to-end-llm-api-basics-hard-33",
+    "question": "What tradeoffs, failure modes, or edge cases exist with RAG End-to-End & LLM API Basics?",
+    "topic": "RAG End-to-End & LLM API Basics",
+    "difficulty": "hard",
+    "learning_objective": "Create a grounded prompt that answers only from retrieved context",
+    "module_id": 4,
+    "day": 11
+  },
+  {
+    "question_id": "day-12-prompt-engineering-fundamentals-easy-34",
+    "question": "Can you explain Prompt Engineering Fundamentals in simple terms?",
+    "topic": "Prompt Engineering Fundamentals",
+    "difficulty": "easy",
+    "learning_objective": "Understand zero-shot, few-shot, and chain-of-thought prompting",
+    "module_id": 4,
+    "day": 12
+  },
+  {
+    "question_id": "day-12-prompt-engineering-fundamentals-medium-35",
+    "question": "Walk me through applying Prompt Engineering Fundamentals to solve a realistic interview problem.",
+    "topic": "Prompt Engineering Fundamentals",
+    "difficulty": "medium",
+    "learning_objective": "Design multiple system prompt variations for the chatbot",
+    "module_id": 4,
+    "day": 12
+  },
+  {
+    "question_id": "day-12-prompt-engineering-fundamentals-hard-36",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Prompt Engineering Fundamentals?",
+    "topic": "Prompt Engineering Fundamentals",
+    "difficulty": "hard",
+    "learning_objective": "Compare prompts based on accuracy, compliance, and tone",
+    "module_id": 4,
+    "day": 12
+  },
+  {
+    "question_id": "day-13-advanced-prompting-function-calling-structured-outputs-easy-37",
+    "question": "Can you explain Advanced Prompting: Function Calling & Structured Outputs in simple terms?",
+    "topic": "Advanced Prompting: Function Calling & Structured Outputs",
+    "difficulty": "easy",
+    "learning_objective": "Define tool schemas for healthcare-related chatbot functions",
+    "module_id": 4,
+    "day": 13
+  },
+  {
+    "question_id": "day-13-advanced-prompting-function-calling-structured-outputs-medium-38",
+    "question": "Walk me through applying Advanced Prompting: Function Calling & Structured Outputs to solve a realistic interview problem.",
+    "topic": "Advanced Prompting: Function Calling & Structured Outputs",
+    "difficulty": "medium",
+    "learning_objective": "Implement LLM function calling with automatic tool execution",
+    "module_id": 4,
+    "day": 13
+  },
+  {
+    "question_id": "day-13-advanced-prompting-function-calling-structured-outputs-hard-39",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Advanced Prompting: Function Calling & Structured Outputs?",
+    "topic": "Advanced Prompting: Function Calling & Structured Outputs",
+    "difficulty": "hard",
+    "learning_objective": "Validate structured outputs using Pydantic models",
+    "module_id": 4,
+    "day": 13
+  },
+  {
+    "question_id": "day-14-fine-tuning-concepts-when-to-use-it-easy-40",
+    "question": "Can you explain Fine-Tuning: Concepts & When to Use It in simple terms?",
+    "topic": "Fine-Tuning: Concepts & When to Use It",
+    "difficulty": "easy",
+    "learning_objective": "Understand when fine-tuning is more appropriate than prompting or RAG",
+    "module_id": 4,
+    "day": 14
+  },
+  {
+    "question_id": "day-14-fine-tuning-concepts-when-to-use-it-medium-41",
+    "question": "Walk me through applying Fine-Tuning: Concepts & When to Use It to solve a realistic interview problem.",
+    "topic": "Fine-Tuning: Concepts & When to Use It",
+    "difficulty": "medium",
+    "learning_objective": "Identify chatbot issues that fine-tuning can solve",
+    "module_id": 4,
+    "day": 14
+  },
+  {
+    "question_id": "day-14-fine-tuning-concepts-when-to-use-it-hard-42",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Fine-Tuning: Concepts & When to Use It?",
+    "topic": "Fine-Tuning: Concepts & When to Use It",
+    "difficulty": "hard",
+    "learning_objective": "Create a high-quality fine-tuning dataset",
+    "module_id": 4,
+    "day": 14
+  },
+  {
+    "question_id": "day-15-fine-tuning-hands-on-with-lora-qlora-easy-43",
+    "question": "Can you explain Fine-Tuning: Hands-On with LoRA & QLoRA in simple terms?",
+    "topic": "Fine-Tuning: Hands-On with LoRA & QLoRA",
+    "difficulty": "easy",
+    "learning_objective": "Train or fine-tune an LLM using LoRA or the OpenAI fine-tuning workflow",
+    "module_id": 4,
+    "day": 15
+  },
+  {
+    "question_id": "day-15-fine-tuning-hands-on-with-lora-qlora-medium-44",
+    "question": "Walk me through applying Fine-Tuning: Hands-On with LoRA & QLoRA to solve a realistic interview problem.",
+    "topic": "Fine-Tuning: Hands-On with LoRA & QLoRA",
+    "difficulty": "medium",
+    "learning_objective": "Load and evaluate the fine-tuned model",
+    "module_id": 4,
+    "day": 15
+  },
+  {
+    "question_id": "day-15-fine-tuning-hands-on-with-lora-qlora-hard-45",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Fine-Tuning: Hands-On with LoRA & QLoRA?",
+    "topic": "Fine-Tuning: Hands-On with LoRA & QLoRA",
+    "difficulty": "hard",
+    "learning_objective": "Compare the base model and fine-tuned model on unseen test cases",
+    "module_id": 4,
+    "day": 15
+  },
+  {
+    "question_id": "day-16-chatbot-backend-api-integration-easy-46",
+    "question": "Can you explain Chatbot Backend & API Integration in simple terms?",
+    "topic": "Chatbot Backend & API Integration",
+    "difficulty": "easy",
+    "learning_objective": "Create a /chat API endpoint for the healthcare chatbot",
+    "module_id": 5,
+    "day": 16
+  },
+  {
+    "question_id": "day-16-chatbot-backend-api-integration-medium-47",
+    "question": "Walk me through applying Chatbot Backend & API Integration to solve a realistic interview problem.",
+    "topic": "Chatbot Backend & API Integration",
+    "difficulty": "medium",
+    "learning_objective": "Integrate retrieval, function calling, and LLM response generation",
+    "module_id": 5,
+    "day": 16
+  },
+  {
+    "question_id": "day-16-chatbot-backend-api-integration-hard-48",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Chatbot Backend & API Integration?",
+    "topic": "Chatbot Backend & API Integration",
+    "difficulty": "hard",
+    "learning_objective": "Implement session-based conversation management",
+    "module_id": 5,
+    "day": 16
+  },
+  {
+    "question_id": "day-17-chatbot-frontend-development-easy-49",
+    "question": "Can you explain Chatbot Frontend Development in simple terms?",
+    "topic": "Chatbot Frontend Development",
+    "difficulty": "easy",
+    "learning_objective": "Build an interactive chat interface for the chatbot",
+    "module_id": 5,
+    "day": 17
+  },
+  {
+    "question_id": "day-17-chatbot-frontend-development-medium-50",
+    "question": "Walk me through applying Chatbot Frontend Development to solve a realistic interview problem.",
+    "topic": "Chatbot Frontend Development",
+    "difficulty": "medium",
+    "learning_objective": "Connect the frontend to the backend chat API",
+    "module_id": 5,
+    "day": 17
+  },
+  {
+    "question_id": "day-17-chatbot-frontend-development-hard-51",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Chatbot Frontend Development?",
+    "topic": "Chatbot Frontend Development",
+    "difficulty": "hard",
+    "learning_objective": "Maintain conversation history across user interactions",
+    "module_id": 5,
+    "day": 17
+  },
+  {
+    "question_id": "day-18-full-stack-integration-streaming-responses-easy-52",
+    "question": "Can you explain Full-Stack Integration & Streaming Responses in simple terms?",
+    "topic": "Full-Stack Integration & Streaming Responses",
+    "difficulty": "easy",
+    "learning_objective": "Implement real-time streaming responses from the LLM",
+    "module_id": 5,
+    "day": 18
+  },
+  {
+    "question_id": "day-18-full-stack-integration-streaming-responses-medium-53",
+    "question": "Walk me through applying Full-Stack Integration & Streaming Responses to solve a realistic interview problem.",
+    "topic": "Full-Stack Integration & Streaming Responses",
+    "difficulty": "medium",
+    "learning_objective": "Display generated tokens incrementally in the chat interface",
+    "module_id": 5,
+    "day": 18
+  },
+  {
+    "question_id": "day-18-full-stack-integration-streaming-responses-hard-54",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Full-Stack Integration & Streaming Responses?",
+    "topic": "Full-Stack Integration & Streaming Responses",
+    "difficulty": "hard",
+    "learning_objective": "Add loading indicators for a better user experience",
+    "module_id": 5,
+    "day": 18
+  },
+  {
+    "question_id": "day-19-response-formatting-rich-outputs-easy-55",
+    "question": "Can you explain Response Formatting & Rich Outputs in simple terms?",
+    "topic": "Response Formatting & Rich Outputs",
+    "difficulty": "easy",
+    "learning_objective": "Add citations to chatbot responses using retrieved knowledge",
+    "module_id": 5,
+    "day": 19
+  },
+  {
+    "question_id": "day-19-response-formatting-rich-outputs-medium-56",
+    "question": "Walk me through applying Response Formatting & Rich Outputs to solve a realistic interview problem.",
+    "topic": "Response Formatting & Rich Outputs",
+    "difficulty": "medium",
+    "learning_objective": "Create structured cards for claims and coverage summaries",
+    "module_id": 5,
+    "day": 19
+  },
+  {
+    "question_id": "day-19-response-formatting-rich-outputs-hard-57",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Response Formatting & Rich Outputs?",
+    "topic": "Response Formatting & Rich Outputs",
+    "difficulty": "hard",
+    "learning_objective": "Render Markdown content with tables, lists, and formatting",
+    "module_id": 5,
+    "day": 19
+  },
+  {
+    "question_id": "day-20-conversation-memory-context-management-easy-58",
+    "question": "Can you explain Conversation Memory & Context Management in simple terms?",
+    "topic": "Conversation Memory & Context Management",
+    "difficulty": "easy",
+    "learning_objective": "Persist conversation history across multiple user sessions",
+    "module_id": 5,
+    "day": 20
+  },
+  {
+    "question_id": "day-20-conversation-memory-context-management-medium-59",
+    "question": "Walk me through applying Conversation Memory & Context Management to solve a realistic interview problem.",
+    "topic": "Conversation Memory & Context Management",
+    "difficulty": "medium",
+    "learning_objective": "Build context-aware conversations using previous messages",
+    "module_id": 5,
+    "day": 20
+  },
+  {
+    "question_id": "day-20-conversation-memory-context-management-hard-60",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Conversation Memory & Context Management?",
+    "topic": "Conversation Memory & Context Management",
+    "difficulty": "hard",
+    "learning_objective": "Implement automatic conversation summarization for long chats",
+    "module_id": 5,
+    "day": 20
+  },
+  {
+    "question_id": "day-21-agentic-frameworks-langchain-agents-tool-use-easy-61",
+    "question": "Can you explain Agentic Frameworks: LangChain Agents & Tool Use in simple terms?",
+    "topic": "Agentic Frameworks: LangChain Agents & Tool Use",
+    "difficulty": "easy",
+    "learning_objective": "Convert function-calling workflows into a reasoning agent",
+    "module_id": 6,
+    "day": 21
+  },
+  {
+    "question_id": "day-21-agentic-frameworks-langchain-agents-tool-use-medium-62",
+    "question": "Walk me through applying Agentic Frameworks: LangChain Agents & Tool Use to solve a realistic interview problem.",
+    "topic": "Agentic Frameworks: LangChain Agents & Tool Use",
+    "difficulty": "medium",
+    "learning_objective": "Wrap chatbot capabilities as reusable LangChain tools",
+    "module_id": 6,
+    "day": 21
+  },
+  {
+    "question_id": "day-21-agentic-frameworks-langchain-agents-tool-use-hard-63",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Agentic Frameworks: LangChain Agents & Tool Use?",
+    "topic": "Agentic Frameworks: LangChain Agents & Tool Use",
+    "difficulty": "hard",
+    "learning_objective": "Build a ReAct agent capable of selecting the correct tool automatically",
+    "module_id": 6,
+    "day": 21
+  },
+  {
+    "question_id": "day-22-multi-agent-orchestration-easy-64",
+    "question": "Can you explain Multi-Agent Orchestration in simple terms?",
+    "topic": "Multi-Agent Orchestration",
+    "difficulty": "easy",
+    "learning_objective": "Create specialized agents for different healthcare domains",
+    "module_id": 6,
+    "day": 22
+  },
+  {
+    "question_id": "day-22-multi-agent-orchestration-medium-65",
+    "question": "Walk me through applying Multi-Agent Orchestration to solve a realistic interview problem.",
+    "topic": "Multi-Agent Orchestration",
+    "difficulty": "medium",
+    "learning_objective": "Build a router agent that delegates requests to the correct specialist",
+    "module_id": 6,
+    "day": 22
+  },
+  {
+    "question_id": "day-22-multi-agent-orchestration-hard-66",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Multi-Agent Orchestration?",
+    "topic": "Multi-Agent Orchestration",
+    "difficulty": "hard",
+    "learning_objective": "Implement a complete multi-agent workflow",
+    "module_id": 6,
+    "day": 22
+  },
+  {
+    "question_id": "day-23-model-context-protocol-mcp-easy-67",
+    "question": "Can you explain Model Context Protocol (MCP) in simple terms?",
+    "topic": "Model Context Protocol (MCP)",
+    "difficulty": "easy",
+    "learning_objective": "Understand the purpose of the Model Context Protocol",
+    "module_id": 6,
+    "day": 23
+  },
+  {
+    "question_id": "day-23-model-context-protocol-mcp-medium-68",
+    "question": "Walk me through applying Model Context Protocol (MCP) to solve a realistic interview problem.",
+    "topic": "Model Context Protocol (MCP)",
+    "difficulty": "medium",
+    "learning_objective": "Build an MCP server exposing healthcare chatbot tools",
+    "module_id": 6,
+    "day": 23
+  },
+  {
+    "question_id": "day-23-model-context-protocol-mcp-hard-69",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Model Context Protocol (MCP)?",
+    "topic": "Model Context Protocol (MCP)",
+    "difficulty": "hard",
+    "learning_objective": "Connect the MCP server to an MCP-compatible client",
+    "module_id": 6,
+    "day": 23
+  },
+  {
+    "question_id": "day-24-agentic-chatbot-integration-easy-70",
+    "question": "Can you explain Agentic Chatbot Integration in simple terms?",
+    "topic": "Agentic Chatbot Integration",
+    "difficulty": "easy",
+    "learning_objective": "Integrate agents, MCP tools, retrieval, and conversation memory",
+    "module_id": 6,
+    "day": 24
+  },
+  {
+    "question_id": "day-24-agentic-chatbot-integration-medium-71",
+    "question": "Walk me through applying Agentic Chatbot Integration to solve a realistic interview problem.",
+    "topic": "Agentic Chatbot Integration",
+    "difficulty": "medium",
+    "learning_objective": "Replace mock tools with live MCP-powered tool calls",
+    "module_id": 6,
+    "day": 24
+  },
+  {
+    "question_id": "day-24-agentic-chatbot-integration-hard-72",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Agentic Chatbot Integration?",
+    "topic": "Agentic Chatbot Integration",
+    "difficulty": "hard",
+    "learning_objective": "Implement retries, timeouts, and graceful error handling",
+    "module_id": 6,
+    "day": 24
+  },
+  {
+    "question_id": "day-25-chatbot-evaluation-testing-easy-73",
+    "question": "Can you explain Chatbot Evaluation & Testing in simple terms?",
+    "topic": "Chatbot Evaluation & Testing",
+    "difficulty": "easy",
+    "learning_objective": "Create a benchmark dataset covering representative healthcare questions",
+    "module_id": 7,
+    "day": 25
+  },
+  {
+    "question_id": "day-25-chatbot-evaluation-testing-medium-74",
+    "question": "Walk me through applying Chatbot Evaluation & Testing to solve a realistic interview problem.",
+    "topic": "Chatbot Evaluation & Testing",
+    "difficulty": "medium",
+    "learning_objective": "Evaluate chatbot responses for accuracy, grounding, and consistency",
+    "module_id": 7,
+    "day": 25
+  },
+  {
+    "question_id": "day-25-chatbot-evaluation-testing-hard-75",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Chatbot Evaluation & Testing?",
+    "topic": "Chatbot Evaluation & Testing",
+    "difficulty": "hard",
+    "learning_objective": "Measure retrieval quality and end-to-end response performance",
+    "module_id": 7,
+    "day": 25
+  },
+  {
+    "question_id": "day-26-performance-optimization-cost-management-easy-76",
+    "question": "Can you explain Performance Optimization & Cost Management in simple terms?",
+    "topic": "Performance Optimization & Cost Management",
+    "difficulty": "easy",
+    "learning_objective": "Measure token usage across the chatbot pipeline",
+    "module_id": 7,
+    "day": 26
+  },
+  {
+    "question_id": "day-26-performance-optimization-cost-management-medium-77",
+    "question": "Walk me through applying Performance Optimization & Cost Management to solve a realistic interview problem.",
+    "topic": "Performance Optimization & Cost Management",
+    "difficulty": "medium",
+    "learning_objective": "Optimize retrieval and prompt size to reduce latency and cost",
+    "module_id": 7,
+    "day": 26
+  },
+  {
+    "question_id": "day-26-performance-optimization-cost-management-hard-78",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Performance Optimization & Cost Management?",
+    "topic": "Performance Optimization & Cost Management",
+    "difficulty": "hard",
+    "learning_objective": "Implement response caching for repeated queries",
+    "module_id": 7,
+    "day": 26
+  },
+  {
+    "question_id": "day-27-security-privacy-guardrails-easy-79",
+    "question": "Can you explain Security, Privacy & Guardrails in simple terms?",
+    "topic": "Security, Privacy & Guardrails",
+    "difficulty": "easy",
+    "learning_objective": "Secure chatbot APIs against unauthorized access",
+    "module_id": 7,
+    "day": 27
+  },
+  {
+    "question_id": "day-27-security-privacy-guardrails-medium-80",
+    "question": "Walk me through applying Security, Privacy & Guardrails to solve a realistic interview problem.",
+    "topic": "Security, Privacy & Guardrails",
+    "difficulty": "medium",
+    "learning_objective": "Validate and sanitize user inputs before processing",
+    "module_id": 7,
+    "day": 27
+  },
+  {
+    "question_id": "day-27-security-privacy-guardrails-hard-81",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Security, Privacy & Guardrails?",
+    "topic": "Security, Privacy & Guardrails",
+    "difficulty": "hard",
+    "learning_objective": "Protect sensitive healthcare information throughout the pipeline",
+    "module_id": 7,
+    "day": 27
+  },
+  {
+    "question_id": "day-28-docker-kubernetes-deployment-easy-82",
+    "question": "Can you explain Docker & Kubernetes Deployment in simple terms?",
+    "topic": "Docker & Kubernetes Deployment",
+    "difficulty": "easy",
+    "learning_objective": "Containerize the chatbot backend and frontend using Docker",
+    "module_id": 7,
+    "day": 28
+  },
+  {
+    "question_id": "day-28-docker-kubernetes-deployment-medium-83",
+    "question": "Walk me through applying Docker & Kubernetes Deployment to solve a realistic interview problem.",
+    "topic": "Docker & Kubernetes Deployment",
+    "difficulty": "medium",
+    "learning_objective": "Deploy the application to a Kubernetes cluster",
+    "module_id": 7,
+    "day": 28
+  },
+  {
+    "question_id": "day-28-docker-kubernetes-deployment-hard-84",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Docker & Kubernetes Deployment?",
+    "topic": "Docker & Kubernetes Deployment",
+    "difficulty": "hard",
+    "learning_objective": "Configure health checks and environment variables",
+    "module_id": 7,
+    "day": 28
+  },
+  {
+    "question_id": "day-29-monitoring-logging-observability-easy-85",
+    "question": "Can you explain Monitoring, Logging & Observability in simple terms?",
+    "topic": "Monitoring, Logging & Observability",
+    "difficulty": "easy",
+    "learning_objective": "Add structured logging throughout the chatbot pipeline",
+    "module_id": 8,
+    "day": 29
+  },
+  {
+    "question_id": "day-29-monitoring-logging-observability-medium-86",
+    "question": "Walk me through applying Monitoring, Logging & Observability to solve a realistic interview problem.",
+    "topic": "Monitoring, Logging & Observability",
+    "difficulty": "medium",
+    "learning_objective": "Monitor API performance and chatbot usage",
+    "module_id": 8,
+    "day": 29
+  },
+  {
+    "question_id": "day-29-monitoring-logging-observability-hard-87",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Monitoring, Logging & Observability?",
+    "topic": "Monitoring, Logging & Observability",
+    "difficulty": "hard",
+    "learning_objective": "Track failures, latency, and tool execution metrics",
+    "module_id": 8,
+    "day": 29
+  },
+  {
+    "question_id": "day-30-production-readiness-final-testing-easy-88",
+    "question": "Can you explain Production Readiness & Final Testing in simple terms?",
+    "topic": "Production Readiness & Final Testing",
+    "difficulty": "easy",
+    "learning_objective": "Perform complete end-to-end testing of the chatbot",
+    "module_id": 8,
+    "day": 30
+  },
+  {
+    "question_id": "day-30-production-readiness-final-testing-medium-89",
+    "question": "Walk me through applying Production Readiness & Final Testing to solve a realistic interview problem.",
+    "topic": "Production Readiness & Final Testing",
+    "difficulty": "medium",
+    "learning_objective": "Validate retrieval, agent workflows, and frontend integration",
+    "module_id": 8,
+    "day": 30
+  },
+  {
+    "question_id": "day-30-production-readiness-final-testing-hard-90",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Production Readiness & Final Testing?",
+    "topic": "Production Readiness & Final Testing",
+    "difficulty": "hard",
+    "learning_objective": "Fix production issues discovered during testing",
+    "module_id": 8,
+    "day": 30
+  },
+  {
+    "question_id": "day-31-capstone-project-final-demo-easy-91",
+    "question": "Can you explain Capstone Project & Final Demo in simple terms?",
+    "topic": "Capstone Project & Final Demo",
+    "difficulty": "easy",
+    "learning_objective": "Demonstrate the complete enterprise healthcare chatbot",
+    "module_id": 8,
+    "day": 31
+  },
+  {
+    "question_id": "day-31-capstone-project-final-demo-medium-92",
+    "question": "Walk me through applying Capstone Project & Final Demo to solve a realistic interview problem.",
+    "topic": "Capstone Project & Final Demo",
+    "difficulty": "medium",
+    "learning_objective": "Showcase retrieval, RAG, agents, MCP, and conversation memory",
+    "module_id": 8,
+    "day": 31
+  },
+  {
+    "question_id": "day-31-capstone-project-final-demo-hard-93",
+    "question": "What tradeoffs, failure modes, or edge cases exist with Capstone Project & Final Demo?",
+    "topic": "Capstone Project & Final Demo",
+    "difficulty": "hard",
+    "learning_objective": "Present the deployed application with production architecture",
+    "module_id": 8,
+    "day": 31
+  }
+]
