@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { MOCK_FEEDBACK_DATA } from '../lib/mockFeedback';
 import { EvidencePanel } from './EvidencePanel';
 import { MOCK_INTERVIEW_QUESTIONS } from '../lib/interviewQuestionsData';
 import { InterviewJourney } from './InterviewJourney';
 import { ThemeToggle } from './ThemeToggle';
+import AssessmentPdfReport from './AssessmentPdfReport';
 
-export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, candidate, appTheme, onToggleTheme }) {
+export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, rawFeedback, candidate, appTheme, onToggleTheme }) {
   const router = useRouter();
   const [animatedScore, setAnimatedScore] = useState(0);
   const [toast, setToast] = useState({ show: true, title: '✓ Assessment Complete', message: 'Technical intelligence evaluation is ready.' });
   const [showNotifications, setShowNotifications] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const pdfReportRef = useRef(null);
 
   const candidateInfo = candidate?.member || {
     name: "Alex Turner",
@@ -56,8 +59,17 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
     setTimeout(() => setToast((prev) => ({ ...prev, show: false })), 3500);
   };
 
-  const handleDownload = () => {
-    triggerToast('✓ Report Ready', 'Assessment intelligence report exported to PDF format.');
+  const handleDownload = async () => {
+    setIsDownloading(true);
+    try {
+      await pdfReportRef.current?.download();
+      triggerToast('Report Downloaded', 'Your technical interview assessment PDF is ready.');
+    } catch (error) {
+      console.error('Report generation failed:', error);
+      triggerToast('Report Download Failed', 'We could not generate the PDF. Please try again.');
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   const handleStartNew = () => {
@@ -123,9 +135,10 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
 
           <button
             onClick={handleDownload}
+            disabled={isDownloading}
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono border border-slate-700/80 bg-slate-900 text-slate-300 hover:bg-slate-800 transition-all hover:translate-y-[-1px]"
           >
-            <span>Download Report</span>
+            <span>{isDownloading ? 'Preparing Report…' : 'Download Report'}</span>
             <span className="text-blue-400">↓</span>
           </button>
           
@@ -524,6 +537,7 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
           </button>
         </div>
       )}
+      <AssessmentPdfReport ref={pdfReportRef} feedback={rawFeedback} candidate={candidate} generatedAt={header?.timestamp} />
     </div>
   );
 }

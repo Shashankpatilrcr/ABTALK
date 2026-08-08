@@ -75,6 +75,7 @@ export default function FeedbackPage({ appTheme, onToggleTheme }) {
   return (
     <FeedbackReport
       feedbackData={feedbackData}
+      rawFeedback={feedbackData?.rawFeedback}
       candidate={candidate}
       appTheme={appTheme}
       onToggleTheme={onToggleTheme}
@@ -95,6 +96,7 @@ function toReportData(feedback) {
   const suggestions = feedback.overall_suggestions?.length ? feedback.overall_suggestions : ['Keep practicing concise technical explanations.'];
 
   return {
+    rawFeedback: feedback,
     header: {
       title: "ASSESSMENT COMPLETE",
       subtitle: "AI Assessment Cockpit • Technical Evaluation Report",
