@@ -1,0 +1,3 @@
+Topics: Capstone Project & Final Demo
+Learning objectives: Demonstrate the complete enterprise healthcare chatbot; Showcase retrieval, RAG, agents, MCP, and conversation memory; Present the deployed application with production architecture; Evaluate the chatbot using real-world scenarios; Publish the final project with source code and documentation
+Tools: FastAPI; React; LangChain; MCP; Docker; Ku
