@@ -33,9 +33,9 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
   // Animated Score counter from 0 to overallScore.score on mount
   useEffect(() => {
     let start = 0;
-    const end = overallScore.score || 84;
+    const end = typeof overallScore?.score === 'number' ? overallScore.score : 75;
     const duration = 800; // ms
-    const increment = Math.ceil(end / (duration / 16));
+    const increment = Math.ceil(end / (duration / 16)) || 1;
 
     const timer = setInterval(() => {
       start += increment;
@@ -48,7 +48,7 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, cand
     }, 16);
 
     return () => clearInterval(timer);
-  }, [overallScore.score]);
+  }, [overallScore?.score]);
 
   // Toast helper trigger
   const triggerToast = (title, message) => {

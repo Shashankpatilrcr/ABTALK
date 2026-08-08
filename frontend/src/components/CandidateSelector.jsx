@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MOCK_CANDIDATES } from '../lib/candidatesData';
+import { getCandidates } from '../lib/api';
 import { CandidateCard } from './CandidateCard';
 import { AssessmentConfig } from './AssessmentConfig';
 import { BeginAssessmentButton } from './BeginAssessmentButton';
 import { ThemeToggle } from './ThemeToggle';
 
-export default function CandidateSelector({ candidates = MOCK_CANDIDATES, appTheme, onToggleTheme }) {
+export default function CandidateSelector({ candidates: initialCandidates = MOCK_CANDIDATES, appTheme, onToggleTheme }) {
   const router = useRouter();
-  const [selectedCandidate, setSelectedCandidate] = useState(candidates[0] || null);
+  const [candidateList, setCandidateList] = useState(initialCandidates);
+  const [selectedCandidate, setSelectedCandidate] = useState(initialCandidates[0] || null);
+
+  useEffect(() => {
+    let cancelled = false;
+    getCandidates()
+      .then((data) => {
+        if (cancelled) return;
+        const fetched = data?.candidates || (Array.isArray(data) ? data : null);
+        if (fetched && fetched.length > 0) {
+          setCandidateList(fetched);
+          setSelectedCandidate(fetched[0]);
+        }
+      })
+      .catch(() => {
+        // Keep initial candidates fallback
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleBeginAssessment = (candidate) => {
     if (!candidate) return;
     if (typeof window !== 'undefined') {
       sessionStorage.setItem('selected_candidate', JSON.stringify(candidate));
+      sessionStorage.removeItem('interview_session_id');
       sessionStorage.removeItem('assessment_history');
     }
     router.push(`/interview?candidateId=${candidate.member.id}`);
   };
+
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-4 sm:p-6 md:p-10 font-sans selection:bg-blue-500 selection:text-white">
@@ -62,13 +85,13 @@ export default function CandidateSelector({ candidates = MOCK_CANDIDATES, appThe
           <section className="lg:col-span-7 space-y-4" aria-label="Candidate Selection">
             <div className="flex justify-between items-center font-mono">
               <h2 className="text-xs font-bold text-slate-300 uppercase tracking-widest">
-                Select Candidate ({candidates.length})
+                Select Candidate ({candidateList.length})
               </h2>
               <span className="text-[11px] text-slate-500">Click a profile to inspect technical DNA</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {candidates.map((c) => (
+              {candidateList.map((c) => (
                 <CandidateCard
                   key={c.member.id}
                   candidate={c}
@@ -77,6 +100,7 @@ export default function CandidateSelector({ candidates = MOCK_CANDIDATES, appThe
                 />
               ))}
             </div>
+
           </section>
 
           {/* Assessment Configuration & Launch Section */}

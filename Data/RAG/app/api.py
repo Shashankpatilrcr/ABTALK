@@ -93,6 +93,25 @@ def health() -> dict[str, Any]:
     }
 
 
+@app.get("/candidates")
+def list_candidates() -> dict[str, Any]:
+    return {"candidates": list(state.candidates.values())}
+
+
+@app.get("/curriculum")
+def get_curriculum() -> dict[str, Any]:
+    return {"curriculum": state.curriculum_chunks}
+
+
+@app.post("/search")
+def search_vector_db(query: str, top_k: int = 3) -> dict[str, Any]:
+    if state.collection is None:
+        raise HTTPException(status_code=503, detail="Vector store is not initialized")
+    results = state.collection.query(query_texts=[query], n_results=top_k)
+    return {"query": query, "results": results}
+
+
+
 @app.get("/candidate/{candidate_id}/summary")
 def candidate_summary(candidate_id: str) -> dict[str, Any]:
     knowledge_map = get_candidate_knowledge_map(candidate_id)

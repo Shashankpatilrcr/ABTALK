@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -18,11 +18,18 @@ class AnswerRequest(BaseModel):
         return value
 
 
+class StartInterviewRequest(BaseModel):
+    candidate: dict[str, Any] | None = None
+    role: str | None = Field(default=None, max_length=120)
+    difficulty: str = Field(default="medium", max_length=40)
+
+
 class StartInterviewResponse(BaseModel):
     session_id: str
     question: str
     curriculum_day: int
     curriculum_topic: str
+    rag_context: str | None = None
 
 
 class AnswerResponse(BaseModel):
@@ -32,6 +39,9 @@ class AnswerResponse(BaseModel):
     status: Literal["active", "completed"]
     curriculum_day: int | None = None
     curriculum_topic: str | None = None
+    progress: dict | None = None            # PRD §3.3 — progress object
+    interview_complete: bool = False        # PRD §3.3 — completion signal
+    feedback_ready: bool = False            # PRD §3.3 — feedback available flag
 
 
 class EvaluationResult(BaseModel):
@@ -59,3 +69,19 @@ class FeedbackResponse(BaseModel):
     evaluated_count: int
     covered_curriculum_days: list[int]
     covered_curriculum_topics: list[str]
+
+
+class InterviewContractRequest(BaseModel):
+    sessionId: str | None = None
+    session_id: str | None = None
+    candidate: dict[str, Any] | None = None
+    message: str | None = None
+    role: str | None = None
+    difficulty: str = "medium"
+
+
+class InterviewContractResponse(BaseModel):
+    reply: str
+    done: bool
+    sessionId: str
+    feedback: dict[str, Any] | None = None

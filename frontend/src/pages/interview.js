@@ -24,6 +24,8 @@ export default function InterviewPage({ appTheme, onToggleTheme }) {
     knowledgeMap,
     activeConceptId,
     exploredConceptIds,
+    progress,
+    error,
     submitAnswer,
   } = useInterviewSession();
 
@@ -63,6 +65,7 @@ export default function InterviewPage({ appTheme, onToggleTheme }) {
         candidateRole={candidate?.member?.jobRole}
         appTheme={appTheme}
         onToggleTheme={onToggleTheme}
+        progress={progress}
       />
 
       {/* Main 3-Zone Cockpit (Proportions: Left ~20%, Center ~45%, Right ~35%) */}
@@ -85,6 +88,13 @@ export default function InterviewPage({ appTheme, onToggleTheme }) {
             questions={questions}
             currentQuestionIndex={currentQuestionIndex}
           />
+
+          {error && (
+            <div className="bg-red-950/80 border border-red-800 text-red-200 px-4 py-3 rounded-lg text-xs font-sans leading-relaxed shadow-lg">
+              <span className="font-bold uppercase tracking-wider block mb-1">⚠️ Connection / API Error</span>
+              {error}
+            </div>
+          )}
 
           {/* Question Display Canvas */}
           <QuestionCard question={currentQuestion} />

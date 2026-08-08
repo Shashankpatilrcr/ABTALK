@@ -1,7 +1,17 @@
 import React from 'react';
 
 export function QuestionCard({ question }) {
-  if (!question) return null;
+  if (!question) {
+
+
+    return (
+      <div className="rounded-2xl p-6 sm:p-8 space-y-5 bg-slate-900/60 border border-slate-800/80 shadow-xl animate-pulse">
+        <div className="h-4 w-48 bg-slate-800/80 rounded"></div>
+        <div className="h-8 w-5/6 bg-slate-800/80 rounded mt-2"></div>
+      </div>
+    );
+  }
+
 
   return (
     <div className={`rounded-2xl p-6 sm:p-8 space-y-5 transition-all duration-300 relative overflow-hidden ${
