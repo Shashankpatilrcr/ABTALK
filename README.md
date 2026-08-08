@@ -44,6 +44,15 @@ Copy `.env.example` and fill in values:
 cp .env.example .env
 ```
 
+The backend uses a process-local in-memory session store. Run a single Uvicorn
+worker until sessions are moved to shared storage. Start Ollama locally and pull
+the configured model before starting the API:
+
+```bash
+ollama pull llama3
+ollama serve
+```
+
 ## Team
 
 | Layer    | Owner    |
