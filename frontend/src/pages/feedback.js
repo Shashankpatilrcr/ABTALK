@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import FeedbackReport from '../components/FeedbackReport';
 import { getFeedback } from '../lib/api';
+import { computeKnowledgeProfile } from '../lib/knowledgeProfileEngine';
 
 export default function FeedbackPage({ appTheme, onToggleTheme }) {
   const [candidate, setCandidate] = useState(null);
   const [feedbackData, setFeedbackData] = useState(null);
+  const [liveKnowledgeProfile, setLiveKnowledgeProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,6 +18,17 @@ export default function FeedbackPage({ appTheme, onToggleTheme }) {
         try {
           setCandidate(JSON.parse(storedCandidate));
         } catch (e) {}
+      }
+
+      // Restore answer history and compute live knowledge profile for the Radar
+      const storedHistory = sessionStorage.getItem('assessment_history');
+      if (storedHistory) {
+        try {
+          const history = JSON.parse(storedHistory);
+          setLiveKnowledgeProfile(computeKnowledgeProfile(history));
+        } catch (e) {
+          console.warn('Could not parse assessment_history for KnowledgeGapRadar:', e);
+        }
       }
 
       const sessionId = sessionStorage.getItem('interview_session_id');
@@ -79,6 +92,7 @@ export default function FeedbackPage({ appTheme, onToggleTheme }) {
       candidate={candidate}
       appTheme={appTheme}
       onToggleTheme={onToggleTheme}
+      liveKnowledgeProfile={liveKnowledgeProfile}
     />
   );
 }

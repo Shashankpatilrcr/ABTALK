@@ -22,6 +22,7 @@ export default function InterviewPage({ appTheme, onToggleTheme }) {
     isFollowUpNext,
     answerHistory,
     knowledgeMap,
+    knowledgeProfile,
     activeConceptId,
     exploredConceptIds,
     progress,
@@ -118,6 +119,7 @@ export default function InterviewPage({ appTheme, onToggleTheme }) {
             activeTopic={activeConceptId}
             exploredTopics={exploredConceptIds}
             isFollowUp={currentQuestion?.isFollowUp}
+            knowledgeProfile={knowledgeProfile}
           />
         </aside>
 

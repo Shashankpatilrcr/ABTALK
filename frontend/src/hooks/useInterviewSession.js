@@ -1,7 +1,8 @@
 // src/hooks/useInterviewSession.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { MOCK_KNOWLEDGE_MAP } from '../lib/mockKnowledgeMap';
+import { computeKnowledgeProfile } from '../lib/knowledgeProfileEngine';
 import { sendAnswer, startInterview } from '../lib/api';
 
 export const SESSION_STATES = {
@@ -163,6 +164,12 @@ export function useInterviewSession() {
     }
   };
 
+  // Compute live knowledge profile from current answer history
+  const knowledgeProfile = useMemo(
+    () => computeKnowledgeProfile(answerHistory),
+    [answerHistory]
+  );
+
   return {
     candidate,
     questions,
@@ -175,6 +182,7 @@ export function useInterviewSession() {
     isFollowUpNext,
     answerHistory,
     knowledgeMap: MOCK_KNOWLEDGE_MAP,
+    knowledgeProfile,
     activeConceptId: currentQuestion?.conceptId,
     exploredConceptIds,
     progress,

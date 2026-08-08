@@ -5,9 +5,10 @@ import { EvidencePanel } from './EvidencePanel';
 import { MOCK_INTERVIEW_QUESTIONS } from '../lib/interviewQuestionsData';
 import { InterviewJourney } from './InterviewJourney';
 import { ThemeToggle } from './ThemeToggle';
+import { KnowledgeGapRadar } from './KnowledgeGapRadar';
 import AssessmentPdfReport from './AssessmentPdfReport';
 
-export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, rawFeedback, candidate, appTheme, onToggleTheme }) {
+export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, candidate, appTheme, onToggleTheme, liveKnowledgeProfile }) {
   const router = useRouter();
   const [animatedScore, setAnimatedScore] = useState(0);
   const [toast, setToast] = useState({ show: true, title: '✓ Assessment Complete', message: 'Technical intelligence evaluation is ready.' });
@@ -319,6 +320,11 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, rawF
             </div>
           </section>
 
+          {/* 5.5 KNOWLEDGE GAP RADAR (live session signals) */}
+          {liveKnowledgeProfile && (
+            <KnowledgeGapRadar profileData={liveKnowledgeProfile} />
+          )}
+
           {/* 5. VISUAL KNOWLEDGE PROFILE */}
           <section className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 sm:p-8 space-y-6">
             <div>
@@ -537,7 +543,7 @@ export default function FeedbackReport({ feedbackData = MOCK_FEEDBACK_DATA, rawF
           </button>
         </div>
       )}
-      <AssessmentPdfReport ref={pdfReportRef} feedback={rawFeedback} candidate={candidate} generatedAt={header?.timestamp} />
+      <AssessmentPdfReport ref={pdfReportRef} feedback={feedbackData} candidate={candidate} generatedAt={header?.timestamp} />
     </div>
   );
 }
