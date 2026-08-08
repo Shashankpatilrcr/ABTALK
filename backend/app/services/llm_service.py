@@ -19,7 +19,14 @@ load_dotenv()
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
 OLLAMA_TIMEOUT_SECONDS = float(os.getenv("OLLAMA_TIMEOUT_SECONDS", "30"))
-OLLAMA_MAX_CONCURRENT_REQUESTS = max(1, int(os.getenv("OLLAMA_MAX_CONCURRENT_REQUESTS", "2")))
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").strip().lower()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_TIMEOUT_SECONDS = float(os.getenv("GEMINI_TIMEOUT_SECONDS", "30"))
+LLM_MAX_CONCURRENT_REQUESTS = max(
+    1,
+    int(os.getenv("LLM_MAX_CONCURRENT_REQUESTS", os.getenv("OLLAMA_MAX_CONCURRENT_REQUESTS", "2"))),
+)
 MAX_EVALUATION_ATTEMPTS = 1
 OLLAMA_GENERATE_URL = f"{OLLAMA_BASE_URL.rstrip('/')}/api/generate"
 
@@ -59,6 +66,18 @@ class OllamaTimeoutError(RuntimeError):
     """Ollama did not respond before the configured deadline."""
 
 
+class LLMConfigurationError(RuntimeError):
+    """The selected LLM provider is not configured correctly."""
+
+
+class GeminiUnavailableError(RuntimeError):
+    """Gemini could not complete a request."""
+
+
+class GeminiTimeoutError(GeminiUnavailableError):
+    """Gemini did not respond before the configured deadline."""
+
+
 @dataclass(frozen=True)
 class EvaluationOutcome:
     result: dict | None
@@ -69,7 +88,7 @@ class EvaluationOutcome:
         return self.result is not None
 
 
-_ollama_semaphore = asyncio.Semaphore(OLLAMA_MAX_CONCURRENT_REQUESTS)
+_llm_semaphore = asyncio.Semaphore(LLM_MAX_CONCURRENT_REQUESTS)
 
 
 async def call_ollama(
@@ -93,7 +112,7 @@ async def call_ollama(
     if json_output:
         payload["format"] = "json"
 
-    async with _ollama_semaphore:
+    async with _llm_semaphore:
         started_at = perf_counter()
         try:
             response = await asyncio.to_thread(
@@ -124,6 +143,72 @@ async def call_ollama(
     return raw_response.strip()
 
 
+async def call_gemini(
+    prompt: str,
+    temperature: float = 0.5,
+    *,
+    max_tokens: int = 50,
+    json_output: bool = False,
+    evaluation_question: str | None = None,
+) -> str:
+    """Call Gemini using Google's current ``google-genai`` SDK."""
+    if not GEMINI_API_KEY:
+        raise LLMConfigurationError("GEMINI_API_KEY is required when LLM_PROVIDER=gemini")
+
+    try:
+        from google import genai
+        from google.genai import types
+    except ImportError as error:
+        raise LLMConfigurationError("google-genai must be installed when LLM_PROVIDER=gemini") from error
+
+    config = types.GenerateContentConfig(
+        temperature=temperature,
+        max_output_tokens=max_tokens,
+        response_mime_type="application/json" if json_output else None,
+    )
+    started_at = perf_counter()
+    try:
+        async with _llm_semaphore:
+            client = genai.Client(
+                api_key=GEMINI_API_KEY,
+                http_options=types.HttpOptions(timeout=int(GEMINI_TIMEOUT_SECONDS * 1000)),
+            )
+            response = await asyncio.to_thread(
+                client.models.generate_content,
+                model=GEMINI_MODEL,
+                contents=prompt,
+                config=config,
+            )
+    except TimeoutError as error:
+        logger.warning("Gemini timeout elapsed=%.2fs", perf_counter() - started_at)
+        raise GeminiTimeoutError("Gemini request timed out") from error
+    except Exception as error:
+        logger.error("Gemini unavailable error=%s", error)
+        raise GeminiUnavailableError("Gemini is unavailable") from error
+
+    raw_response = getattr(response, "text", None)
+    if not isinstance(raw_response, str) or not raw_response.strip():
+        raise GeminiUnavailableError("Gemini returned an empty response")
+    logger.info("Gemini success latency=%.2fs response=%r", perf_counter() - started_at, raw_response[:100])
+    return raw_response.strip()
+
+
+async def call_llm(
+    prompt: str,
+    temperature: float = 0.5,
+    *,
+    max_tokens: int = 50,
+    json_output: bool = False,
+    evaluation_question: str | None = None,
+) -> str:
+    """Route requests to the environment-selected LLM provider."""
+    if LLM_PROVIDER == "ollama":
+        return await call_ollama(prompt, temperature, max_tokens=max_tokens, json_output=json_output, evaluation_question=evaluation_question)
+    if LLM_PROVIDER == "gemini":
+        return await call_gemini(prompt, temperature, max_tokens=max_tokens, json_output=json_output, evaluation_question=evaluation_question)
+    raise LLMConfigurationError("LLM_PROVIDER must be either 'ollama' or 'gemini'")
+
+
 async def generate_question(
     previous_q: str,
     previous_a: str,
@@ -148,9 +233,9 @@ async def generate_question(
         rag_context=rag_context or "No context available.",
     )
     try:
-        question = await call_ollama(prompt, temperature=0.5, max_tokens=50)
-    except (OllamaUnavailableError, OllamaTimeoutError):
-        logger.warning("Using topic fallback question after Ollama timeout/error")
+        question = await call_llm(prompt, temperature=0.5, max_tokens=50)
+    except (OllamaUnavailableError, OllamaTimeoutError, GeminiUnavailableError, GeminiTimeoutError, LLMConfigurationError):
+        logger.warning("Using topic fallback question after LLM timeout/error")
         return _get_topic_fallback(curriculum_topic, history)
 
     # Clean up whitespace and quotes
@@ -225,7 +310,7 @@ async def evaluate_answer(question: str, answer: str) -> EvaluationOutcome:
     prompt = EVALUATION_PROMPT.format(question=question[:120], answer=answer[:300])
     logger.info("Evaluation Prompt: %s", prompt)
     try:
-        raw_response = await call_ollama(
+        raw_response = await call_llm(
             prompt,
             temperature=0.2,
             max_tokens=130,
@@ -243,7 +328,7 @@ async def evaluate_answer(question: str, answer: str) -> EvaluationOutcome:
             evaluation["score"] = score
             return EvaluationOutcome(result=evaluation)
     except Exception as error:
-        logger.warning("Ollama evaluation call failed question=%r error=%s", question, error)
+        logger.warning("LLM evaluation call failed question=%r error=%s", question, error)
 
     # Heuristic evaluation fallback based on answer length & detail if Ollama is busy
     if words < 4 or len(clean_ans) < 15:

@@ -1,4 +1,5 @@
 import logging
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,25 +16,29 @@ def configure_logging() -> None:
 
 configure_logging()
 
-app = FastAPI(title="Ollama AI Interview Agent", version="1.0.0")
+app = FastAPI(title="AI Interview Agent", version="1.0.0")
+LOCAL_FRONTEND_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:3002",
+    "http://localhost:3003",
+    "http://localhost:3004",
+    "http://localhost:3005",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:3001",
+    "http://127.0.0.1:3002",
+    "http://127.0.0.1:3003",
+    "http://127.0.0.1:3004",
+    "http://127.0.0.1:3005",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+FRONTEND_URL = os.getenv("FRONTEND_URL", "").rstrip("/")
+ALLOWED_ORIGINS = LOCAL_FRONTEND_ORIGINS + ([FRONTEND_URL] if FRONTEND_URL else [])
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:3001",
-        "http://localhost:3002",
-        "http://localhost:3003",
-        "http://localhost:3004",
-        "http://localhost:3005",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:3001",
-        "http://127.0.0.1:3002",
-        "http://127.0.0.1:3003",
-        "http://127.0.0.1:3004",
-        "http://127.0.0.1:3005",
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
