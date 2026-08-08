@@ -1,0 +1,9 @@
+{
+  "questions": [
+    "What is the difference between a list and a tuple in Python?",
+    "How would you design a REST API endpoint to create a new user?",
+    "What is database indexing, and why can it improve query performance?",
+    "What is the difference between authentication and authorization?",
+    "How would you diagnose a slow API endpoint in production?"
+  ]
+}

@@ -1,50 +1,61 @@
-from pydantic import BaseModel
-from typing import Optional, List, Any, Dict
+from typing import Literal
+
+from pydantic import BaseModel, Field, field_validator
+
+from app.utils.sanitizer import MAX_ANSWER_LENGTH, sanitize_prompt_input
 
 
-class CandidateMember(BaseModel):
-    id: str
-    name: str
-    jobRole: str
-    yearsExperience: int
-    education: str
-    status: str
+class AnswerRequest(BaseModel):
+    session_id: str
+    answer: str = Field(..., min_length=1, max_length=MAX_ANSWER_LENGTH)
+
+    @field_validator("answer")
+    @classmethod
+    def sanitize_answer(cls, value: str) -> str:
+        value = sanitize_prompt_input(value)
+        if not value:
+            raise ValueError("answer must contain visible characters")
+        return value
 
 
-class Mission(BaseModel):
-    day: int
-    title: str
-    passed: Optional[bool] = None
-    attempts: Optional[int] = None
-    skipped: Optional[bool] = None
+class StartInterviewResponse(BaseModel):
+    session_id: str
+    question: str
+    curriculum_day: int
+    curriculum_topic: str
 
 
-class Signals(BaseModel):
-    commitDays: int
-    missionsCompleted: int
-    missionsFirstTry: int
+class AnswerResponse(BaseModel):
+    session_id: str
+    next_question: str | None = None
+    question_number: int
+    status: Literal["active", "completed"]
+    curriculum_day: int | None = None
+    curriculum_topic: str | None = None
 
 
-class Candidate(BaseModel):
-    member: CandidateMember
-    missions: List[Mission]
-    signals: Signals
+class EvaluationResult(BaseModel):
+    question: str
+    answer: str
+    curriculum_day: int
+    curriculum_topic: str
+    score: int | None = Field(default=None, ge=0, le=10)
+    strength: str | None = None
+    weakness: str | None = None
+    suggestion: str | None = None
+    evaluation_status: Literal["succeeded", "failed"]
+    evaluation_error: str | None = None
 
 
-class InterviewRequest(BaseModel):
-    sessionId: str
-    candidate: Optional[Candidate] = None  # only on first call
-    message: Optional[str] = None           # only on subsequent calls
-
-
-class Feedback(BaseModel):
-    summary: str
-    strengths: List[str]
-    gaps: List[str]
-    next: List[str]
-
-
-class InterviewResponse(BaseModel):
-    reply: str
-    done: bool
-    feedback: Optional[Feedback] = None
+class FeedbackResponse(BaseModel):
+    session_id: str
+    status: Literal["active", "completed"]
+    results: list[EvaluationResult]
+    total_score: int
+    average_score: float
+    overall_strengths: list[str]
+    overall_weaknesses: list[str]
+    overall_suggestions: list[str]
+    evaluated_count: int
+    covered_curriculum_days: list[int]
+    covered_curriculum_topics: list[str]
