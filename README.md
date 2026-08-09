@@ -1,62 +1,72 @@
-# AI Interview Agent
+# 🚀 AI Interview Agent
 
-An AI-powered interview platform that conducts personalized interviews based on candidate learning history and curriculum data.
+🔗 **Live Demo:** https://abtalk-9lyy.vercel.app/
 
-## Quick Start
+---
 
-### 1. Backend
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
+## 🧠 Overview
 
-### 2. Data Layer
-```bash
-cd data
-pip install -r requirements.txt
-python scripts/ingest_curriculum.py
-python scripts/process_candidates.py
-python scripts/data_api.py
-```
+The AI Interview Agent is an intelligent system that conducts **realistic, multi-turn technical interviews** based on a candidate’s learning journey.
 
-### 3. Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
+It simulates a real interviewer by adapting questions, maintaining context, and providing structured feedback.
 
-Open [http://localhost:3000](http://localhost:3000)
+---
 
-## Architecture
+## 🏗️ System Architecture
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+![Architecture Diagram](./architecture.png)
 
-## API Contract
+> High-level system design showing interaction between frontend, backend, AI layers, and adaptive interview engine.
 
-See [docs/API_CONTRACT.md](docs/API_CONTRACT.md)
+---
 
-## Environment Variables
+## ✨ Key Features
 
-Copy `.env.example` and fill in values:
-```bash
-cp .env.example .env
-```
+- 🎯 Personalized interview experience  
+- 🔁 Multi-turn conversational flow  
+- 🧠 Adaptive follow-up questioning  
+- 📚 Curriculum-aware questioning  
+- 📊 Structured feedback & evaluation  
+- 🌐 Fully deployed and accessible  
+- 📱 Responsive interface  
 
-The backend uses a process-local in-memory session store. Run a single Uvicorn
-worker until sessions are moved to shared storage. Start Ollama locally and pull
-the configured model before starting the API:
+---
 
-```bash
-ollama pull llama3
-ollama serve
-```
+## 🔄 How It Works
 
-## Team
+1. Candidate starts an interview  
+2. System generates a question based on progress  
+3. Candidate submits an answer  
+4. AI:
+   - Evaluates the response  
+   - Generates a follow-up question  
+5. Process continues for multiple rounds  
+6. Final feedback is generated  
 
-| Layer    | Owner    |
-|----------|----------|
-| Backend  | Person 1 |
-| Data     | Person 2 |
-| Frontend | Person 3 |
+---
+
+## 🧠 Core Concepts Used
+
+- Prompt Engineering  
+- Retrieval-Augmented Generation (RAG)  
+- Context-aware conversations  
+- Adaptive questioning  
+- AI-based evaluation  
+
+---
+
+## ⚠️ Limitations
+
+- No session persistence  
+- No authentication system  
+- Basic evaluation logic  
+
+---
+
+## 🔮 Future Improvements
+
+- Add database support  
+- Improve evaluation accuracy  
+- Implement authentication  
+- Enhance UI/UX  
+- Add voice-based interviews  
