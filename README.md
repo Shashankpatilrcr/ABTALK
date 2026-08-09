@@ -14,7 +14,7 @@ It simulates a real interviewer by adapting questions, maintaining context, and 
 
 ## 🏗️ System Architecture
 
-![Architecture Diagram](./architecture.png)
+![Architecture Diagram](./architecture.png.jpeg)
 
 > High-level system design showing interaction between frontend, backend, AI layers, and adaptive interview engine.
 
