@@ -5,6 +5,7 @@ import { ThemeToggle } from '../components/ThemeToggle';
 export default function LandingHero({ appTheme, onToggleTheme }) {
   const [activeStep, setActiveStep] = useState(0);
   const [hoveredNode, setHoveredNode] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Auto-play 1 sequence over 4 seconds on mount
   useEffect(() => {
@@ -34,22 +35,28 @@ export default function LandingHero({ appTheme, onToggleTheme }) {
           </span>
         </div>
 
-        <div className="flex items-center gap-5 sm:gap-8">
+        <div className="hidden md:flex items-center gap-5 lg:gap-8">
           <Link
             href="/curriculum"
-            className="hidden sm:inline-block text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
+            className="text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
           >
             Curriculum
           </Link>
+          <Link
+            href="/interview"
+            className="text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
+          >
+            Interview
+          </Link>
           <a
             href="#how-it-works"
-            className="hidden sm:inline-block text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
+            className="text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
           >
             How it works
           </a>
           <a
             href="#why-adaptive"
-            className="hidden sm:inline-block text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
+            className="text-sm font-mono font-bold text-slate-300 hover:text-blue-400 transition-colors"
           >
             Why adaptive
           </a>
@@ -64,6 +71,48 @@ export default function LandingHero({ appTheme, onToggleTheme }) {
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
+
+        <button
+          type="button"
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 bg-slate-900/80 text-slate-100 transition-colors hover:border-blue-500 hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+          aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        >
+          <span aria-hidden="true" className="text-xl leading-none">☰</span>
+        </button>
+
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-navigation"
+            className="absolute right-0 top-14 w-64 rounded-xl border border-slate-700 bg-slate-950/95 p-3 shadow-2xl shadow-slate-950/50 backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200 md:hidden"
+          >
+            <div className="flex flex-col gap-1">
+              <Link
+                href="/curriculum"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-sm font-mono font-bold text-slate-200 transition-colors hover:bg-slate-800 hover:text-blue-400"
+              >
+                Curriculum
+              </Link>
+              <Link
+                href="/interview"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-sm font-mono font-bold text-slate-200 transition-colors hover:bg-slate-800 hover:text-blue-400"
+              >
+                Interview
+              </Link>
+              <Link
+                href="/launchpad"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-2 rounded-lg bg-blue-600 px-3 py-2.5 text-center text-xs font-mono font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-500"
+              >
+                Begin Assessment
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Body Grid */}
